@@ -14,3 +14,12 @@ systemctl start httpd
 
 # Configuramos para que el servicio se inicie automaticamente
 systemctl enable httpd 
+
+#Instalamos Mysql server
+dnf install mysql-server -y
+
+# iniciamos el servicio de MySQL
+systemctl start mysqld
+
+# Configuramos el servicio para que se inicie automaticamente en cada reinicio
+systemctl enable mysqld
