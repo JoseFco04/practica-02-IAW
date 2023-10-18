@@ -42,6 +42,11 @@ chown -R apache:apache /var/www/html
 # Creamos un archivo de configuracion a partir del archivo e ejemplo
 cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
 
+# Generamos la variable blowfish_secret 
+RANDOM_VALUE=`openssl rand -hex 16`
+
+# Modificamos la variable blowfish_secret
+sed -i "s/\(\$cfg\['blowfish_secret'\] =\).*/\1 '$RANDOM_VALUE';/" /var/www/html/phpmyadmin/config.inc.php
 # Eliminamos si existe alguna base de datos previa de phpMyadmin
 mysql -u root <<< "DROP DATABASE IF EXISTS phpmyadmin"
 
