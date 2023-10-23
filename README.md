@@ -117,4 +117,7 @@ sudo mysql -u root <<< "DROP USER IF EXISTS $PMA_USER@'%'"
 sudo mysql -u root <<< "CREATE USER $PMA_USER@'%' IDENTIFIED BY '$PMA_PASS'"
 sudo mysql -u root <<< "GRANT ALL PRIVILEGES ON $PMA_DB.* TO $PMA_USER@'%'"
 
-## Y el tercero el .env con las variables 
+## Y el tercero el .env con las variables que quedaría así
+PMA_USER=JoseFco
+PMA_PASS=123456
+PMA_DB=phpmyadmin
