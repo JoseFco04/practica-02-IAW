@@ -47,6 +47,13 @@ RANDOM_VALUE=`openssl rand -hex 16`
 
 # Modificamos la variable blowfish_secret
 sed -i "s/\(\$cfg\['blowfish_secret'\] =\).*/\1 '$RANDOM_VALUE';/" /var/www/html/phpmyadmin/config.inc.php
+
+#creamos un directorio temporal para phpmyadmin
+mkdir -p /var/www/html/phpmyadmin/tmp/
+
+# Actualizamos los permisos del directorio /var/www/html
+chown -R apache:apache /var/www/html 
+
 # Eliminamos si existe alguna base de datos previa de phpMyadmin
 mysql -u root <<< "DROP DATABASE IF EXISTS phpmyadmin"
 
